@@ -5,13 +5,12 @@ import demo_waveform_plot as getWavPlot
 import numpy as np
 
 # Get time tag
-def get_time_tag(filePath):
+# input the file path and tagNum+1 tags will be returned
+def get_time_tag(filePath,tagNum):
     # filePath = "../interval.mp3"
     # filePath = "../440_sine.wav"
     # filePath = "../test.wav"
 
-    # return timePointNum-1 "time tag"
-    timeTagNum = 10
 
     samplerate = 0  # use original source samplerate
     hop_size = 256 # number of frames to read in one block
@@ -56,7 +55,7 @@ def get_time_tag(filePath):
     startTime = 0.
     totalBar = endTime/bmp_Second
 
-    step = round(totalBar/timeTagNum)
+    step = round(totalBar/tagNum)
     if(step <= 0): step = 1
     interval = bmp_Second*step
     tagTimePoint = np.arange(startTime+silenceTime,endTime,interval)
@@ -71,11 +70,12 @@ def get_time_tag(filePath):
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print("Usage: %s <filename>" % sys.argv[0])
     else:
-        for soundfile in sys.argv[1:]:
-            get_time_tag(soundfile)
-            getWavPlot.get_waveform_plot(soundfile)
-            # display graph
-            plt.show()
+        soundfile = sys.argv[1]
+        tagNum = int(sys.argv[2])
+        get_time_tag(soundfile,tagNum)
+        getWavPlot.get_waveform_plot(soundfile)
+        # display graph
+        plt.show()
