@@ -11,7 +11,7 @@ def get_time_tag(filePath):
     # filePath = "../test.wav"
 
     # return timePointNum-1 "time tag"
-    timeTagNum = 100
+    timeTagNum = 10
 
     samplerate = 0  # use original source samplerate
     hop_size = 256 # number of frames to read in one block
