@@ -56,7 +56,9 @@ def get_time_tag(filePath):
     startTime = 0.
     totalBar = endTime/bmp_Second
 
-    interval = bmp_Second*round(totalBar/timeTagNum)
+    step = round(totalBar/timeTagNum)
+    if(step <= 0): step = 1
+    interval = bmp_Second*step
     tagTimePoint = np.arange(startTime+silenceTime,endTime,interval)
 
     # print("File BMP is %f"%(bmp))
