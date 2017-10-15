@@ -1,4 +1,7 @@
 1. Please use Pip to install the needed packages which may include numpy, Aubio etc...
-2. Run Aubio.py in folder aubio
+2. Run Aubio.py in folder aubio.
+Param1:filePath
+Parmm2:TagNum
+For example: python Aubio.py ../LittleStar.wav 10
 3. Aubio may be the most powerful & opensource library for audio analysis which is based on C language.
 More information can be found here: https://github.com/aubio/aubio.
